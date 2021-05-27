@@ -6,6 +6,14 @@ defmodule RockeliveryWeb.ItemsController do
 
   action_fallback FallbackController
 
+  def index(conn, _params) do
+    items = Rockelivery.get_items()
+
+    conn
+    |> put_status(:ok)
+    |> render("items.json", items: items)
+  end
+
   def create(conn, params) do
     with {:ok, %Item{} = item} <- Rockelivery.create_item(params) do
       conn
@@ -13,28 +21,4 @@ defmodule RockeliveryWeb.ItemsController do
       |> render("create.json", item: item)
     end
   end
-
-  # def delete(conn, %{"id" => id}) do
-    # with {:ok, %User{}} <- Rockelivery.delete_user(id) do
-      # conn
-      # |> put_status(:no_content)
-      # |> text("")
-    # end
-  # end
-
-  # def show(conn, %{"id" => id}) do
-    # with {:ok, %User{} = user} <- Rockelivery.get_user_by_id(id) do
-      # conn
-      # |> put_status(:ok)
-      # |> render("user.json", user: user)
-    # end
-  # end
-
-  # def update(conn, params) do
-    # with {:ok, %User{} = user} <- Rockelivery.update_user(params) do
-      # conn
-      # |> put_status(:ok)
-      # |> render("user.json", user: user)
-    # end
-  # end
 end

@@ -6,12 +6,13 @@ defmodule Rockelivery.Order do
   alias Rockelivery.{Item, User}
 
   @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id
 
-  @required_params [:address, :comments, :payment_method, :user_id]
+  @required_params [:address, :payment_method, :user_id]
 
   @payment_methods [:money, :credit_card, :debit_card]
 
-  @derive {Jason.Encoder, only: @required_params ++ [:id]}
+  @derive {Jason.Encoder, only: @required_params ++ [:id, :items]}
 
   schema "orders" do
     field :payment_method, Ecto.Enum, values: @payment_methods
@@ -30,6 +31,5 @@ defmodule Rockelivery.Order do
     |> validate_required(@required_params)
     |> put_assoc(:items, items)
     |> validate_length(:address, min: 10)
-    |> validate_length(:comments, min: 6)
   end
 end
