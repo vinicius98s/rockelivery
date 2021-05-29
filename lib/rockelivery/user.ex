@@ -13,6 +13,8 @@ defmodule Rockelivery.User do
 
   @derive {Jason.Encoder, only: [:id, :age, :name, :address, :email]}
 
+  def build(changeset), do: apply_action(changeset, :create)
+
   schema "users" do
     field :age, :integer
     field :address, :string
