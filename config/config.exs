@@ -24,6 +24,14 @@ config :rockelivery, RockeliveryWeb.Endpoint,
   pubsub_server: Rockelivery.PubSub,
   live_view: [signing_salt: "eWuFFOAW"]
 
+config :rockelivery, RockeliveryWeb.Auth.Guardian,
+  issuer: "rockelivery",
+  secret_key: "eu0h3PHIx5aKmXcFPTHWsGk7rmBCOR82n8tu1GMukuAEAc5FHh67V7m7aeVFZmHE"
+
+config :rockelivery, RockeliveryWeb.Auth.Pipeline,
+  module: RockeliveryWeb.Auth.Guardian,
+  error_handler: RockeliveryWeb.Auth.ErrorHandler
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
