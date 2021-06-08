@@ -1,7 +1,7 @@
 defmodule Rockelivery.Items.Get do
-  alias Rockelivery.{Repo, Item}
+  alias Rockelivery.{Item, Repo}
 
-  def call() do
+  def call do
     Repo.all(Item)
   end
 end

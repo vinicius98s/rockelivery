@@ -1,8 +1,8 @@
 defmodule Rockelivery.Orders.Report do
   import Ecto.Query
 
-  alias Rockelivery.{Order, Repo, Item}
   alias Rockelivery.Orders.TotalPrice
+  alias Rockelivery.{Item, Order, Repo}
 
   @default_block_size 500
 

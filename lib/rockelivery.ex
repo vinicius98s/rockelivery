@@ -1,8 +1,8 @@
 defmodule Rockelivery do
   alias Rockelivery.Orders.Create, as: OrdersCreate
 
-  alias Rockelivery.Items.Get, as: ItemsGet
   alias Rockelivery.Items.Create, as: ItemsCreate
+  alias Rockelivery.Items.Get, as: ItemsGet
 
   alias Rockelivery.Users.Create, as: UsersCreate
   alias Rockelivery.Users.Delete, as: UsersDelete
